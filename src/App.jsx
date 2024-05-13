@@ -1,13 +1,19 @@
-// src/App.jsx
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GameComponent from "./components/GameComponent";
+import Home from "./components/Home"; // Vérifie le chemin ici
 
 const App = () => {
   return (
-    <div>
-      <h1>Jeu de Yams</h1>
-      <GameComponent />
-    </div>
+    <Router>
+      <div>
+        <h1>Jeu de Yams</h1>
+        <Routes>
+          <Route path="/" exact element={<Home />} />{" "}
+          <Route path="/game" element={<GameComponent />} />{" "}
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
