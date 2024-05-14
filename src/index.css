@@ -42,7 +42,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
+  background-color: #FFBB70;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -58,11 +59,74 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
+    
   }
   a:hover {
     color: #747bff;
   }
   button {
     background-color: #f9f9f9;
+    /* background-color: #FFBB70; */
   }
+}
+
+.diceList {
+  display: flex;
+  flex-direction: row;
+}
+
+/* General styles for the dice */
+.dice {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 2px solid #333;
+  border-radius: 10px;
+  margin: 10px;
+  position: relative;
+}
+
+.dot {
+  width: 17px;
+  height: 17px;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* Positioning dots for each face */
+.face-1 .dot:nth-child(1) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+.face-2 .dot:nth-child(1) { top: 20%; left: 20%; }
+.face-2 .dot:nth-child(2) { bottom: 20%; right: 20%; }
+
+.face-3 .dot:nth-child(1) { top: 20%; left: 20%; }
+.face-3 .dot:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.face-3 .dot:nth-child(3) { bottom: 20%; right: 20%; }
+
+.face-4 .dot {
+  &:nth-child(1) { top: 20%; left: 20%; }
+  &:nth-child(2) { top: 20%; right: 20%; }
+  &:nth-child(3) { bottom: 20%; left: 20%; }
+  &:nth-child(4) { bottom: 20%; right: 20%; }
+}
+
+.face-5 .dot {
+  &:nth-child(1) { top: 20%; left: 20%; }
+  &:nth-child(2) { top: 20%; right: 20%; }
+  &:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  &:nth-child(4) { bottom: 20%; left: 20%; }
+  &:nth-child(5) { bottom: 20%; right: 20%; }
+}
+
+.face-6 .dot {
+  &:nth-child(1), &:nth-child(3), &:nth-child(5) { left: 20%; }
+  &:nth-child(2), &:nth-child(4), &:nth-child(6) { right: 20%; }
+  &:nth-child(1), &:nth-child(2) { top: 20%; }
+  &:nth-child(3), &:nth-child(4) { top: 50%; transform: translateY(-50%); }
+  &:nth-child(5), &:nth-child(6) { bottom: 20%; }
 }
