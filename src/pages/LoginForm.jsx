@@ -1,4 +1,7 @@
+// LoginForm.jsx
+
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -33,6 +36,7 @@ const LoginForm = () => {
         </div>
         <button type="submit">Se connecter</button>
       </form>
+      <Link to="/game">Retourner au jeu</Link> {/* Bouton retourner au jeu */}
     </div>
   );
 };
