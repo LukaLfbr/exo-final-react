@@ -21,6 +21,7 @@ const Game = () => {
   };
 
   console.log(scores);
+  console.log(dice);
 
 
   return (
