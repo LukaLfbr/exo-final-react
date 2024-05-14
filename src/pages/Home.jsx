@@ -5,7 +5,7 @@ const Home = () => {
   const { data: pastries, error, isLoading } = useGetPastriesQuery();
   return (
     <>
-    <div>
+    <div> 
       <h2>Bienvenue au jeu de Yams !</h2>
       <p>Commencez à jouer en cliquant sur le bouton ci-dessous :</p>
       <Link to="/game">
