@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Dice from "../components/Dice";
 
 const Game = () => {
-  const { dice, rollsLeft, selectedDice } = useSelector((state) => state.yams);
+  const { dice, rollsLeft, selectedDice, scores } = useSelector((state) => state.yams);
   const dispatch = useDispatch();
   const [isRolling, setIsRolling] = useState(false); // State to control dice rolling
 
@@ -20,12 +20,16 @@ const Game = () => {
     }
   };
 
+  console.log(scores);
+
+
   return (
     <div>
       <div className="diceList">
         {dice.map((d, i) => {
           // Determine the onClick function based on the game state
-          const handleDiceClick = rollsLeft < 3 ? () => dispatch(toggleDiceSelection(i)) : undefined;
+          // const handleDiceClick = rollsLeft < 3 ? () => dispatch(toggleDiceSelection(i)) : undefined;
+          const handleDiceClick = rollsLeft < 50 ? () => dispatch(toggleDiceSelection(i)) : undefined; //test
 
           return (
             <div key={i} onClick={handleDiceClick}
