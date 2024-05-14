@@ -5,6 +5,5 @@ import yamsReducer from "./yamsSlice";
 export const store = configureStore({
   reducer: {
     yams: yamsReducer,
-    // Ajoute d'autres reducers si nécessaire
   },
 });
