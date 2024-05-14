@@ -3,8 +3,7 @@ import DiceGame from "../components/DiceGame";
 import { useGetPastriesQuery } from "../features/pastry";
 
 const Home = () => {
-  // const { data: pastries, error, isLoading } = useGetPastriesQuery();
-  console.log(useGetPastriesQuery().data);
+  const { data: pastries, error, isLoading } = useGetPastriesQuery();
   return (
     <>
     <div>
@@ -16,12 +15,12 @@ const Home = () => {
       </Link>
     </div>
     <h3>Pâtisseries :</h3>
-    {/* {pastries && pastries.map((pastry, i) => (
+    {pastries && pastries.map((pastry, i) => (
                 <div key={i}>
                     <p>{pastry.name}</p>
                     <img src={pastry.image} alt={`Front default of ${pastry.name}`} />
                 </div>
-            ))} */}
+            ))}
     </>
   );
 };
