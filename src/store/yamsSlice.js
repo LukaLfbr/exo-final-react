@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  dice: Array(5).fill(Math.floor(Math.random() * 6) + 1), // random initial values
-  rollsLeft: 3,
+  dice: Array.from({ length: 5 }, () => Math.floor(Math.random() * 6) + 1),// random initial values
+  // rollsLeft: 3,
+  rollsLeft: 50, // test
   scores: {
     suite:0,
     carre: 0,
