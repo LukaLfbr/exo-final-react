@@ -4,7 +4,7 @@ import { useGetPastriesQuery } from "../features/pastry";
 
 const Home = () => {
   // const { data: pastries, error, isLoading } = useGetPastriesQuery();
-  console.log(useGetPastriesQuery());
+  console.log(useGetPastriesQuery().data);
   return (
     <>
     <div>
