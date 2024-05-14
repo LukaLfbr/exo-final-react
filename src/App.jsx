@@ -1,8 +1,8 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import GameComponent from "./components/GameComponent";
-import Home from "./components/Home";
-import ResultPage from "./components/ResultPage"; // Import du nouveau composant
+import Game from "./pages/Game";
+import Home from "./pages/Home"; // Vérifie le chemin ici
+import "./index.css";
+import Results from "./pages/Results";
 
 const App = () => {
   return (
@@ -10,10 +10,9 @@ const App = () => {
       <div>
         <h1>Jeu de Yams</h1>
         <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/game" element={<GameComponent />} />
-          <Route path="/result" element={<ResultPage />} />{" "}
-          {/* Nouvelle route */}
+          <Route path="/" exact element={<Home />} />{" "}
+          <Route path="/game" element={<Game />} />{" "}
+          <Route path="/results" element={<Results />} />{" "}
         </Routes>
       </div>
     </Router>

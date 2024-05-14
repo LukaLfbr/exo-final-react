@@ -1,27 +1,64 @@
-// src/store/yamsSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  dice: Array(5).fill(0), // valeurs des dés
-  rollsLeft: 3, // nombre de lancers restants
+  dice: Array(5).fill(1),
+  rollsLeft: 3,
   scores: {
-    /* scores des différentes combinaisons */
+    suite:0,
+    carre: 0,
+    yams:0
   },
+  selectedDice: Array(5).fill(true)
 };
 
 const yamsSlice = createSlice({
   name: "yams",
   initialState,
   reducers: {
+    // rollDice(state) {
+    //   handleDiceRoll(state);
+    // },
+    toggleDiceSelection(state, action) {
+      state.selectedDice[action.payload] = !state.selectedDice[action.payload];
+    },
     rollDice(state) {
-      // Générer de nouvelles valeurs pour les dés
-      state.dice = state.dice.map(() => Math.floor(Math.random() * 6) + 1);
+      state.dice = state.dice.map((value, index) =>
+        state.selectedDice[index] ? Math.floor(Math.random() * 6) + 1 : value
+      );
       state.rollsLeft -= 1;
     },
-    // Autres actions pour le jeu de Yams
+    resetDiceSelection(state) {
+      state.selectedDice.fill(true);
+    }
+    
   },
 });
 
-export const { rollDice } = yamsSlice.actions;
+function handleDiceRoll(state){
+  state.dice = state.dice.map(() => Math.floor(Math.random() * 6) + 1);
+      state.rollsLeft -= 1;
+
+      // Count the frequency of each die value
+      const counts = {};
+      state.dice.forEach(num => counts[num] = (counts[num] || 0) + 1);
+
+      // Check for Yams (five of a kind)
+      if (Object.values(counts).includes(5)) {
+        state.scores.yams += 1;
+      }
+
+      // Check for Four of a Kind (carre)
+      if (Object.values(counts).includes(4)) {
+        state.scores.carre += 1;
+      }
+
+      // Check for Large Straight (suite)
+      const sortedDice = [...state.dice].sort();
+      if (sortedDice.join(',') === '1,2,3,4,5' || sortedDice.join(',') === '2,3,4,5,6') {
+        state.scores.suite += 1;
+      }
+}
+
+export const { rollDice, toggleDiceSelection, resetDiceSelection } = yamsSlice.actions;
 
 export default yamsSlice.reducer;
